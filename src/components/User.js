@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 export default function User({ usersData, setUsersData, userID, colorClass }) {
   function handleClick(){
-    console.log()
     setUsersData({ ...usersData, activeUserId: userID })
   }
   return (

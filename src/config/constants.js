@@ -8,9 +8,10 @@ export const fetchOptions = {
 };
 
 export const apiKey = "3fdd9af104fa44949e93f4439f239443";
-export const MoviesListAPILink =
+export const popularMoviesLink =
   "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
-export const imageLink = "https://image.tmdb.org/t/p/w500";
+export const searchMoviesLink = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&sort_by=popularity.desc&dpage=1&query='
+export const imageLink = "https://image.tmdb.org/t/p/w500/";
 
 export const initialUsersData = {
   users: {

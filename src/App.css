@@ -160,10 +160,13 @@
 
 .icon {
   width: 30px;
-  display: block;
   height: 30px;
+  display: block;
   color: black;
+  background-color: white;
   position: absolute;
+  border-radius: 100%;
+  border: 1px solid black;
   top: 0;
   right: 0;
 }
@@ -179,5 +182,5 @@
 }
 
 .movie-description-container > img {
-  width: 30%;
+  width: 25%;
 }

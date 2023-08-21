@@ -5,7 +5,7 @@ export default async function fetchMovies(url){
         const response = await fetch(url, fetchOptions);
         const data = await response.json();
         // console.log(`from fetch function: ${JSON.stringify(data)}`)
-        return data;
+        return data.results.slice(0, 10);
     } catch (err) {
         return console.error(err);
     }

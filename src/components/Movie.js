@@ -7,13 +7,18 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 const movieCost = 1;
 
 export default function Movie({ movie, usersData, setUsersData }) {
-  const [rentStatus, setRentStatus] = useState(false);
+  const [rentStatus, setRentStatus] = useState(
+    usersData.getActiveUser().rentedMovies.find((el) => el.id === movie.id)
+      ? true
+      : false
+  );
 
   useEffect(() => {
     if (
-      usersData.users[usersData.activeUserId].rentedMovies.find(
-        (rentedMovie) => rentedMovie.id === movie.id
-      ) !== undefined
+      usersData
+        .getActiveUser()
+        .rentedMovies.find((rentedMovie) => rentedMovie.id === movie.id) !==
+      undefined
     ) {
       setRentStatus(true);
     } else {
@@ -29,29 +34,30 @@ export default function Movie({ movie, usersData, setUsersData }) {
         users: {
           ...usersData.users,
           [usersData.activeUserId]: {
-            ...usersData.users[usersData.activeUserId],
-            balance: usersData.users[usersData.activeUserId].balance + movieCost,
-            rentedMovies: usersData.users[usersData.activeUserId].rentedMovies.filter(
-              (rentedMovie) => rentedMovie.id !== movie.id
-            ),
+            ...usersData.getActiveUser(),
+            balance: usersData.getActiveUser().balance + movieCost,
+            rentedMovies: usersData
+              .getActiveUser()
+              .rentedMovies.filter(
+                (rentedMovie) => rentedMovie.id !== movie.id
+              ),
           },
         },
       });
     } else {
       // - -> +
-
       if (
-        usersData.users[usersData.activeUserId].balance - movieCost >= 0 &&
-        usersData.users[usersData.activeUserId].rentedMovies.length < 10
+        usersData.getActiveUser().balance - movieCost >= 0 &&
+        usersData.getActiveUser().rentedMovies.length < 10
       ) {
         setUsersData({
           ...usersData,
           users: {
             ...usersData.users,
             [usersData.activeUserId]: {
-              ...usersData.users[usersData.activeUserId],
-              balance: usersData.users[usersData.activeUserId].balance - movieCost,
-              rentedMovies: [...usersData.users[usersData.activeUserId].rentedMovies, movie],
+              ...usersData.getActiveUser(),
+              balance: usersData.getActiveUser().balance - movieCost,
+              rentedMovies: [...usersData.getActiveUser().rentedMovies, movie],
             },
           },
         });
@@ -61,7 +67,9 @@ export default function Movie({ movie, usersData, setUsersData }) {
 
   return (
     <div className="movie-container">
-      <Link to={`/movies/${movie.id}`}><img src={imageLink + movie.poster_path} className="movie-image" /></Link>
+      <Link to={`/movies/${movie.id}`}>
+        <img src={imageLink + movie.poster_path} className="movie-image" />
+      </Link>
       <FontAwesomeIcon
         icon={rentStatus ? faMinus : faPlus}
         className="icon"

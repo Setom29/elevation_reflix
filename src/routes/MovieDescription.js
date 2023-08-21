@@ -3,7 +3,6 @@ import { imageLink } from "../config/constants";
 
 export default function MovieDescription({moviesList}){
     const { id } = useParams();
-    console.log(moviesList.find(movie=>movie.id == id))
     const movie = moviesList.find((movie)=>movie.id == id)
     return(
         <div className="movie-description-container">

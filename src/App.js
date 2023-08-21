@@ -12,13 +12,14 @@ import fetchMovies from "./requests/fetchData";
 function App() {
   const [usersData, setUsersData] = useState(initialUsersData);
   const [moviesList, setMoviesList] = useState([]);
-  async function fetchData() {
-    const response = await fetchMovies(MoviesListAPILink);
-    setMoviesList(response.results.slice(0, 10));
-  }
-  useEffect(() => {
-    fetchData();
-  }, []);
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetchMovies(MoviesListAPILink);
+  //     setMoviesList(response);
+  //   }
+  //   fetchData();
+  // }, []);
   return (
     <Router>
       <div className="App">
@@ -41,6 +42,7 @@ function App() {
                   usersData={usersData}
                   setUsersData={setUsersData}
                   moviesList={moviesList}
+                  setMoviesList={setMoviesList}
                 />
               }
             />
