@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
 
-
-export default function User({user, setUser, colorClass}){
-    return (
-        <div className="user-container">
-            <Link to={"/catalog"}><button className={`_btn user-btn ${colorClass}`} onClick={() => setUser(user)}>{user.name}</button></Link>
-        </div>
-    )
+export default function User({ usersData, setUsersData, userID, colorClass }) {
+  function handleClick(){
+    console.log()
+    setUsersData({ ...usersData, activeUserId: userID })
+  }
+  return (
+    <div className="user-container">
+      <Link to={"/catalog"}>
+        <button
+          className={`_btn user-btn ${colorClass}`}
+          onClick={handleClick}
+        >
+          {usersData.users[userID].name}
+        </button>
+      </Link>
+    </div>
+  );
 }

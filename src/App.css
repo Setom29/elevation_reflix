@@ -167,3 +167,17 @@
   top: 0;
   right: 0;
 }
+
+
+.movie-description-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin: 5%;
+}
+
+.movie-description-container > img {
+  width: 30%;
+}

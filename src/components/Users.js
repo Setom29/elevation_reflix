@@ -1,12 +1,21 @@
 import User from "./User";
 const colorClasses = ["blue", "red", "green", "yellow"];
 
-export default function Users({ users, setUser }) {
+export default function Users({ usersData, setUsersData }) {
   return (
     <div className="users-container">
-      {users.map((user, index) => (
-        <User user={user} colorClass={colorClasses[index]} key={index} setUser={setUser}/>
-      ))}
+      {Object.keys(usersData.users)
+        .filter((id) => id !== "default")
+        .map((id, index) => (
+          <User
+            userID={id}
+            usersData={usersData}
+            colorClass={colorClasses[index]}
+            setUsersData={setUsersData}
+            key={index}
+
+          />
+        ))}
     </div>
   );
 }
