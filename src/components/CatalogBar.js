@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 import fetchMovies from "../requests/fetchData";
 import { popularMoviesLink, searchMoviesLink } from "../config/constants";
 
-export default function CatalogBar({ usersData, moviesList, setMoviesList }) {
-  const [searchValue, setSearchValue] = useState("");
-
+export default function CatalogBar({ usersData, setUsersData }) {
+    const [searchValue, setSearchValue] = useState("")
   useEffect(() => {
     async function fetchData() {
       let response = [];
@@ -14,7 +13,7 @@ export default function CatalogBar({ usersData, moviesList, setMoviesList }) {
       } else {
         response = await fetchMovies(searchMoviesLink + searchValue);
       }
-      setMoviesList(response);
+      setUsersData({...usersData, moviesList: response});
     }
     fetchData();
   }, [searchValue]);

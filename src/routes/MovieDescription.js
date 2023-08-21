@@ -1,9 +1,9 @@
 import { useParams } from 'react-router';
 import { imageLink } from "../config/constants";
 
-export default function MovieDescription({moviesList}){
+export default function MovieDescription({usersData}){
     const { id } = useParams();
-    const movie = moviesList.find((movie)=>movie.id == id)
+    const movie = usersData.moviesList.find((movie)=>movie.id == id)
     return(
         <div className="movie-description-container">
             <div>{`${movie.original_title} (${movie.release_date.slice(0, 4)})`}</div>

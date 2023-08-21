@@ -7,19 +7,9 @@ import Catalog from "./routes/Catalog";
 import Home from "./routes/Home";
 import MovieDescription from "./routes/MovieDescription";
 import { initialUsersData, MoviesListAPILink } from "./config/constants";
-import fetchMovies from "./requests/fetchData";
 
 function App() {
   const [usersData, setUsersData] = useState(initialUsersData);
-  const [moviesList, setMoviesList] = useState([]);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetchMovies(MoviesListAPILink);
-  //     setMoviesList(response);
-  //   }
-  //   fetchData();
-  // }, []);
   return (
     <Router>
       <div className="App">
@@ -41,12 +31,10 @@ function App() {
                 <Catalog
                   usersData={usersData}
                   setUsersData={setUsersData}
-                  moviesList={moviesList}
-                  setMoviesList={setMoviesList}
                 />
               }
             />
-            <Route path="/movies/:id" element={<MovieDescription moviesList={moviesList} />} />
+            <Route path="/movies/:id" element={<MovieDescription usersData={usersData}/>} />
           </Routes>
         </div>
       </div>

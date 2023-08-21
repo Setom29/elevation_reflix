@@ -42,6 +42,7 @@ export const initialUsersData = {
     },
   },
   activeUserId: "default",
+  moviesList:[],
 
   getActiveUser(){
     return this.users[this.activeUserId]}
