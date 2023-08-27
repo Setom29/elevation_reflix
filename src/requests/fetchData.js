@@ -10,3 +10,14 @@ export default async function fetchMovies(url){
         return console.error(err);
     }
 }
+
+
+export async function fetchYouTubeId(url){
+    try {
+        const response = await fetch(url, fetchOptions);
+        const data = await response.json();
+        return data.results[0].key ?? undefined
+    } catch (err) {
+        return console.error(err);
+    }
+}

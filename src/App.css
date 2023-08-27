@@ -184,3 +184,10 @@
 .movie-description-container > img {
   width: 25%;
 }
+
+.movie-description__video-container{
+  width: 600px;
+  height: 350px;
+  box-sizing: border-box;
+  border: none;
+}
