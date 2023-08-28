@@ -7,12 +7,18 @@ export const fetchOptions = {
   },
 };
 
-export const apiKey = "3fdd9af104fa44949e93f4439f239443";
+
+export const apiKeyGiphy = "A225IlOOm5SCFnadxI5hKcygSlSURuJX";
+export const giphyLink = "https://api.giphy.com/v1/gifs/search?api_key=A225IlOOm5SCFnadxI5hKcygSlSURuJX&limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips&q="
+
+export const apiKeyTMDB = "3fdd9af104fa44949e93f4439f239443";
 export const popularMoviesLink =
   "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
 export const searchMoviesLink = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&sort_by=popularity.desc&dpage=1&query='
 export const imageLink = "https://image.tmdb.org/t/p/w500/";
 export const getYouTubeIdLink = (id) => `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`
+
+export const getKeyword = (id) => `https://api.themoviedb.org/3/movie/${id}/keywords`
 
 export const initialUsersData = {
   users: {

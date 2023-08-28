@@ -7,9 +7,21 @@ import Catalog from "./routes/Catalog";
 import Home from "./routes/Home";
 import MovieDescription from "./routes/MovieDescription";
 import { initialUsersData, MoviesListAPILink } from "./config/constants";
+import ReflixModal from "./components/ReflixModal";
 
 function App() {
   const [usersData, setUsersData] = useState(initialUsersData);
+
+  const [clickedMovie, setClickedMovie] = useState(undefined);
+  const [openModal, setOpenModal] = useState(false);
+
+  useEffect(() => {
+    if (clickedMovie !== undefined) {
+      console.log(clickedMovie);
+      setOpenModal(true);
+    }
+  }, [clickedMovie]);
+
   return (
     <Router>
       <div className="App">
@@ -19,10 +31,7 @@ function App() {
             <Route
               path="/"
               element={
-                <Home
-                  usersData={usersData}
-                  setUsersData={setUsersData}
-                />
+                <Home usersData={usersData} setUsersData={setUsersData} />
               }
             />
             <Route
@@ -31,13 +40,23 @@ function App() {
                 <Catalog
                   usersData={usersData}
                   setUsersData={setUsersData}
+                  setClickedMovie={setClickedMovie}
                 />
               }
             />
-            <Route path="/movies/:id" element={<MovieDescription usersData={usersData}/>} />
+            <Route
+              path="/movies/:id"
+              element={<MovieDescription usersData={usersData} />}
+            />
           </Routes>
         </div>
       </div>
+      {openModal ? (
+        <ReflixModal
+          movie={clickedMovie}
+          setOpenModal={setOpenModal}
+        />
+      ) : null}
     </Router>
   );
 }

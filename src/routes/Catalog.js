@@ -2,7 +2,7 @@ import Movies from "../components/Movies";
 import CatalogBar from "../components/CatalogBar";
 import { useState } from "react";
 
-export default function Catalog({usersData, setUsersData }) {
+export default function Catalog({usersData, setUsersData, setClickedMovie }) {
   // const [userMovies, setUserMovies] = useState(moviesList.map((el) => {
   //   return {...el, rented: false}}))
   return (
@@ -25,6 +25,7 @@ export default function Catalog({usersData, setUsersData }) {
           usersData={usersData}
           setUsersData={setUsersData}
           moviesList={usersData.moviesList}
+          setClickedMovie={setClickedMovie}
         />
       </div>
     </div>

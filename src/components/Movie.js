@@ -4,9 +4,10 @@ import { imageLink } from "../config/constants";
 import "font-awesome/css/font-awesome.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import ReflixModal from "./ReflixModal";
 const movieCost = 1;
 
-export default function Movie({ movie, usersData, setUsersData }) {
+export default function Movie({ movie, usersData, setUsersData, setClickedMovie }) {
   const [rentStatus, setRentStatus] = useState(
     usersData.getActiveUser().rentedMovies.find((el) => el.id === movie.id)
       ? true
@@ -28,7 +29,7 @@ export default function Movie({ movie, usersData, setUsersData }) {
 
   function handleClick() {
     if (rentStatus) {
-      //  + -> -
+      // console.log("- -> +")
       setUsersData({
         ...usersData,
         users: {
@@ -45,7 +46,7 @@ export default function Movie({ movie, usersData, setUsersData }) {
         },
       });
     } else {
-      // - -> +
+      // console.log("+ -> -")
       if (
         usersData.getActiveUser().balance - movieCost >= 0 &&
         usersData.getActiveUser().rentedMovies.length < 10
@@ -61,7 +62,9 @@ export default function Movie({ movie, usersData, setUsersData }) {
             },
           },
         });
+        setClickedMovie(movie)
       }
+
     }
   }
 

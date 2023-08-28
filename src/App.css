@@ -33,7 +33,7 @@
   }
 }
 
-.unactive{
+.unactive {
   display: none;
 }
 
@@ -45,7 +45,6 @@
   color: white;
   padding: 0 2%;
 }
-
 
 .header {
   height: 30px;
@@ -171,7 +170,6 @@
   right: 0;
 }
 
-
 .movie-description-container {
   display: flex;
   flex-direction: column;
@@ -185,9 +183,63 @@
   width: 25%;
 }
 
-.movie-description__video-container{
+.movie-description__video-container {
   width: 600px;
   height: 350px;
   box-sizing: border-box;
+  border: none;
+}
+
+/* modal */
+
+
+.reflix-modal__container {
+  position: fixed; /* Stay in place */
+  z-index: 100; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.reflix-modal__window {
+  color: white;
+  background-color: #000000;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+}
+
+.reflix-modal__button-container{
+
+
+}
+
+.reflix-modal__title__exit-button{
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: white;
+  float: right;
+
+}
+
+.reflix-modal__title{
+  text-align: center;
+}
+
+.reflix-modal__gif-container{
+  width: 100%;
   border: none;
 }
