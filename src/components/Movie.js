@@ -7,7 +7,12 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import ReflixModal from "./ReflixModal";
 const movieCost = 1;
 
-export default function Movie({ movie, usersData, setUsersData, setClickedMovie }) {
+export default function Movie({
+  movie,
+  usersData,
+  setUsersData,
+  setClickedMovie,
+}) {
   const [rentStatus, setRentStatus] = useState(
     usersData.getActiveUser().rentedMovies.find((el) => el.id === movie.id)
       ? true
@@ -62,22 +67,23 @@ export default function Movie({ movie, usersData, setUsersData, setClickedMovie 
             },
           },
         });
-        setClickedMovie(movie)
+        setClickedMovie(movie);
       }
-
     }
   }
 
   return (
     <div className="movie-container">
-      <Link to={`/movies/${movie.id}`}>
-        <img src={imageLink + movie.poster_path} className="movie-image" />
-      </Link>
-      <FontAwesomeIcon
-        icon={rentStatus ? faMinus : faPlus}
-        className="icon"
-        onClick={handleClick}
-      />
+      <div className="movie-container__movie">
+        <Link to={`/movies/${movie.id}`}>
+          <img src={imageLink + movie.poster_path} className="movie-image" />
+        </Link>
+        <FontAwesomeIcon
+          icon={rentStatus ? faMinus : faPlus}
+          className="icon"
+          onClick={handleClick}
+        />
+      </div>
     </div>
   );
 }
